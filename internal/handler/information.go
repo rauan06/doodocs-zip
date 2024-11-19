@@ -66,7 +66,7 @@ func sendZipResponse(w http.ResponseWriter, zipParser service.ZipParser, filenam
 }
 
 func CustomResponse(w http.ResponseWriter, key string, value interface{}) {
-	response := map[string]interface{}{key: value}
 	w.Header().Set("Content-Type", "application/json")
+	response := map[string]interface{}{key: value}
 	json.NewEncoder(w).Encode(response)
 }

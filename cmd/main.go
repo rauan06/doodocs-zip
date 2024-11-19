@@ -5,11 +5,13 @@ import (
 	"log"
 	"log/slog"
 	"net/http"
+	"os"
 	"zip/internal/api"
 	"zip/internal/config"
 )
 
 func main() {
+	fmt.Println(os.Getenv("pass"))
 	conf := config.SetupConfig()
 	slog.SetDefault(conf.Logger)
 

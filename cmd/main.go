@@ -13,7 +13,7 @@ func main() {
 	conf := config.SetupConfig()
 	slog.SetDefault(conf.Logger)
 
-	addr := fmt.Sprintf("52.41.36.82:%d", conf.Port)
+	addr := fmt.Sprintf("0.0.0.0:%d", conf.Port)
 
 	srv := &http.Server{
 		Addr:    addr,

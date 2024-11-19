@@ -63,6 +63,7 @@ func processFiles(r *http.Request) ([]models.File, error) {
 }
 
 func handleError(w http.ResponseWriter, message string, statusCode int) {
-	CustomResponse(w, "error", message)
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
+	CustomResponse(w, "error", message)
 }

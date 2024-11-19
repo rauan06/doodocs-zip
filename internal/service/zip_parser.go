@@ -9,6 +9,7 @@ import (
 	"zip/models"
 )
 
+// Interface for fetching and reading files from "multipart/form-data".
 type ZipParser interface {
 	Unzip(r io.Reader) error
 	CreateResponse() (*models.Response, error)
@@ -19,7 +20,7 @@ type Zip struct {
 	Size      int64
 }
 
-// Unzip reads the contents of the provided reader, extracting zip data
+// Unzip reads the contents of the provided reader, extracting zip data.
 func (z *Zip) Unzip(r io.Reader) error {
 	zipData, err := io.ReadAll(r)
 	if err != nil {
@@ -37,7 +38,7 @@ func (z *Zip) Unzip(r io.Reader) error {
 	return nil
 }
 
-// CreateResponse generates a response based on the contents of the zip file
+// CreateResponse generates a response based on the contents of the zip file.
 func (z *Zip) CreateResponse() (*models.Response, error) {
 	if z.ZipReader == nil {
 		return nil, fmt.Errorf("can't create response without calling Unzip() first")
